@@ -228,7 +228,7 @@ void OLED_DrawBMP(unsigned char x0, unsigned char y0,unsigned char x1, unsigned 
     else {
         y = y1 / 8 + 1;
     }
-    printf("OLED_DrawBMP - Calculated y as: `%s`\r\n", y);
+    //printf("OLED_DrawBMP - Calculated y as: `%s`\r\n", y);
 
 	for(y=y0;y<y1;y++)
 	{
