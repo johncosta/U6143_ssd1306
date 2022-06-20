@@ -13,7 +13,7 @@ int main(void)
 {
     int ret;
 
-    ret = setup(i2c); if (ret > 0) {
+    ret = setup((i2c *)); if (ret > 0) {
         goto exit;
     }
 
