@@ -34,7 +34,7 @@ extern int i2cd;
 #define OLED_CMD  0	                 //command
 #define OLED_DATA 1	                //data
 #define SSD1306_I2C_ADDRESS   0x3C	// 011110+SA0+RW - 0x0C    
-#define SSD1306_SWITCHCAPVCC 0x2
+//#define SSD1306_SWITCHCAPVCC 0x2
 
 #define SSD1306_LCDWIDTH                  128
 #define SSD1306_LCDHEIGHT                 32
