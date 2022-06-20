@@ -10,7 +10,7 @@ Demo for ssd1306 i2c driver for  Raspberry Pi
  */
 int main(void) 
 {
-    if int ret = setup(); ret > 0 {
+    int ret = setup(); if ret > 0 {
         exit(ret);
     }
 
