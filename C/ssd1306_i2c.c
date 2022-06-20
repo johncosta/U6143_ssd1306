@@ -59,7 +59,7 @@ int ssd1306_begin(unsigned int vccstate, unsigned int i2caddr)
   i2cd = open(I2C_ADAPTER, O_RDWR);
   if (i2cd < 0)
   {
-	  fprintf(stderr, "Device I2C-1 failed to initialize\r\n");
+	  fprintf(stderr, "Device I2C-1 failed to open\r\n");
 	  ret = 1;
 	  goto exit;
   }
