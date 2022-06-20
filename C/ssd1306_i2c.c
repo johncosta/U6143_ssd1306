@@ -101,7 +101,7 @@ int ssd1306_begin(char ic2_name[20], unsigned int vccstate, unsigned int i2caddr
 	OLED_WR_Byte(SSD1306_CHARGEPUMP,OLED_CMD);
 	OLED_WR_Byte(0x14,OLED_CMD);
 	OLED_WR_Byte(SSD1306_DISPLAYON,OLED_CMD);
-    OLED_ShowString(0, 0, "Hello World!", 16)
+    OLED_ShowString(0, 0, "Hello World!", 16);
 
     exit:
         return ret;
