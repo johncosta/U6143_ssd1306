@@ -18,8 +18,9 @@ int main(void)
         goto exit;
     }
 
+    char IPSource[20] = &FirstGetIpAddress();
+
     unsigned char symbol = 0;
-    FirstGetIpAddress();                        //Get IP address
     while(1)
     {
         LCD_Display(symbol);

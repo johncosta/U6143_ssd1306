@@ -47,34 +47,33 @@ int setup(unsigned char ic2_name[20], unsigned int wait)
         return ret;
 }
 
-char IPSource[20]={0};
 int i2cd;
 
 // Init SSD1306
 int ssd1306_begin(char ic2_name[20], unsigned int vccstate, unsigned int i2caddr)
 {
-  unsigned char buffer[20]={0};
-  unsigned char count=0;
-  int ret = 0;
-  FILE* fp;
+    unsigned char buffer[20]={0};
+    unsigned char count=0;
+    int ret = 0;
+    FILE* fp;
 
-  /*
-   * open file to read and write, and start the cursor for both
-   * at the beginning of the file
-   */
-  i2cd = open(ic2_name, O_RDWR);
-  if (i2cd < 0)
-  {
-	  fprintf(stderr, "Device I2C-1 failed to open\r\n");
-	  ret = 1;
-	  goto exit;
-  }
-  if (ioctl(i2cd, I2C_SLAVE_FORCE, i2caddr) < 0)
-  {
-      fprintf(stderr, "Device I2C-1 failed to initialize\r\n");
-	  ret = 1;
-	  goto exit;
-  }
+    /*
+    * open file to read and write, and start the cursor for both
+    * at the beginning of the file
+    */
+    i2cd = open(ic2_name, O_RDWR);
+    if (i2cd < 0)
+    {
+        fprintf(stderr, "Device I2C-1 failed to open\r\n");
+        ret = 1;
+        goto exit;
+    }
+    if (ioctl(i2cd, I2C_SLAVE_FORCE, i2caddr) < 0)
+    {
+        fprintf(stderr, "Device I2C-1 failed to initialize\r\n");
+        ret = 1;
+        goto exit;
+    }
     //ssd1306_128x32_init();  // package
 
 	OLED_WR_Byte(SSD1306_DISPLAYOFF,OLED_CMD);
@@ -459,9 +458,11 @@ void LCD_Display(unsigned char symbol)
 }
 
 
-void FirstGetIpAddress(void)
+*char ip_address FirstGetIpAddress(void)
 {
-  strcpy(IPSource,GetIpAddress());     
+    printf("Retrieving ip address...\r\n");
+    ip_address = &GetIpAddress();
+    return ip_address
 }
 
 char* GetIpAddress(void)
