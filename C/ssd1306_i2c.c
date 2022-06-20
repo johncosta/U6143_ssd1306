@@ -181,7 +181,7 @@ void OLED_ShowNum(unsigned char x,unsigned char y,unsigned int num,unsigned char
 // Coordinate setting
 void OLED_Set_Pos(unsigned char x, unsigned char page_num)
 {
-    printf("Setting co-ordinates. position: page_num: `%i`...\r\n", page_num);
+    //printf("Setting co-ordinates. position: page_num: `%i`...\r\n", page_num);
     OLED_WR_Byte(SSD1306_SETPAGE + page_num,OLED_CMD);
 	OLED_WR_Byte(((x&0xf0)>>4)|0x10,OLED_CMD);
 	OLED_WR_Byte((x&0x0f),OLED_CMD); 
