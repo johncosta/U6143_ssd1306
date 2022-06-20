@@ -458,10 +458,10 @@ void LCD_Display(unsigned char symbol)
 }
 
 
-char* ip_address FirstGetIpAddress(void)
+char* FirstGetIpAddress(void)
 {
     printf("Retrieving ip address...\r\n");
-    ip_address = &GetIpAddress();
+    char *ip_address = &GetIpAddress();
     fprintf("Found: `%s`\r\n", ip_address);
     return ip_address
 }
