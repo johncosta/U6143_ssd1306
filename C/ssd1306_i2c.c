@@ -291,10 +291,10 @@ void LCD_DisplayTemperature()
     fprintf(stdout, "Found temp: `%i`\r\n", temp);
 
     fp = popen("top -bn1 | grep load | awk '{printf \"%.2f\", $(NF-2)}'", "r");
-    fgets(buffer, sizeof (buffer), fp);
+    char* value = fgets(buffer, sizeof (buffer), fp);
     pclose(fp);
     buffer[3] = '\0';
-    fprintf(stdout, "Found cpu load: `%i`\r\n", buffer);
+    fprintf(stdout, "Found cpu load: `%%`\r\n", value);
 
 
     OLED_Clear();                                        //Remove the interface
