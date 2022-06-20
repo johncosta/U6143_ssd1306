@@ -29,12 +29,8 @@ int setup(void)
     ret = ssd1306_begin(SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS);
     printf("Initialized.\r\n");
 
-    if(i2cd < 0)
-    {
-        printf("I2C device failed to open\r\n");
-        return 0;
-    }
     usleep(150*1000);                                                  //Short delay Ensure the normal response of the lower function
+
     exit:
         if (ret) {
             fprintf (stderr, "%s.\n", strerror(-ret));
