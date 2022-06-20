@@ -18,7 +18,7 @@ int main(void)
         goto exit;
     }
 
-    char IPSource[20] = FirstGetIpAddress();
+    char* IPSource = FirstGetIpAddress();
 
     unsigned char symbol = 0;
     while(1)
