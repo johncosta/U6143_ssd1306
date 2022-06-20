@@ -293,7 +293,7 @@ void LCD_DisplayTemperature()
     fp = popen("top -bn1 | grep load | awk '{printf \"%.2f\", $(NF-2)}'", "r");
     char* value = fgets(buffer, sizeof (buffer), fp);
     pclose(fp);
-    buffer[3] = '\0';
+    buffer[4] = '\0';
     fprintf(stdout, "Found cpu load: `%s`\r\n", value);
 
 
