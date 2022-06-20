@@ -296,7 +296,7 @@ void LCD_DisplayTemperature()
   if (IP_SWITCH == IP_DISPLAY_OPEN)
   {
     // strcpy(IPSource,GetIpAddress());   //Get the IP address of the device's wireless network card
-    OLED_ShowString(0,0, &GetIpAddress(),8);          //Send the IP address to the lower machine
+    OLED_ShowString(0,0, GetIpAddress(),8);          //Send the IP address to the lower machine
   }
   else
   {
