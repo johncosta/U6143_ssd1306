@@ -121,8 +121,8 @@ void OLED_ShowString(unsigned char x,unsigned char y,unsigned char *chr,unsigned
 
 void OLED_ShowChar(unsigned char x,unsigned char y,unsigned char chr,unsigned char Char_Size)
 {
-    printf("In ShowChar...\r\n");
-	unsigned char c=0,i=0;	
+//    printf("In ShowChar...\r\n");
+	unsigned char c=0,i=0;
 		c=chr-' ';    //Get the offset value	
 		if(x>SSD1306_LCDWIDTH-1){x=0;y=y+2;}
 		if(Char_Size ==16)
@@ -141,7 +141,7 @@ void OLED_ShowChar(unsigned char x,unsigned char y,unsigned char chr,unsigned ch
 				OLED_WR_Byte(F6x8[c][i],OLED_DATA);
 				
 			}
-    printf("Out ShowChar.\r\n");
+//    printf("Out ShowChar.\r\n");
 }
 
 unsigned int oled_pow(unsigned char m,unsigned char n)
