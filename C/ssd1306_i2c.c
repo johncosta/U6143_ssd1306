@@ -281,11 +281,10 @@ void OLED_Clear(void)
 */
 void LCD_DisplayTemperature()
 {
-  unsigned char symbol=0;
   unsigned int temp=0;
   FILE * fp;
   unsigned char  buffer[80] = {0};
-  temp=Obaintemperature();                  //Gets the temperature of the CPU
+  temp = Obaintemperature();                  //Gets the temperature of the CPU
   fp=popen("top -bn1 | grep load | awk '{printf \"%.2f\", $(NF-2)}'","r");    //Gets the load on the CPU
   fgets(buffer, sizeof (buffer),fp);                                    //Read the CPU load
   pclose(fp);
@@ -441,19 +440,22 @@ void LCD_DisplaySdMemory(void)
 */
 void LCD_Display(unsigned char symbol)
 {
-  switch(symbol)
-  {
-    case 0:
-      LCD_DisplayTemperature();
-    break;
-    case 1:
-      LCD_DisPlayCpuMemory();
-    break;
-    case 2:
-      LCD_DisplaySdMemory();
-    break;
-    default:
-    break;
+    switch(symbol)
+    {
+        case 0:
+            printf("Display Tempature...");
+            LCD_DisplayTemperature();
+        break;
+        case 1:
+            printf("Display CPU/Mem...");
+            LCD_DisPlayCpuMemory();
+            break;
+        case 2:
+            printf("Display Diskspace...");
+            LCD_DisplaySdMemory();
+            break;
+        default:
+        break;
   }
 }
 
