@@ -6,7 +6,7 @@ This library just support 128X32 lcd with i2c interface;
 #define SSD1306_I2C_H_
 
 const unsigned char i2c[20] = "/dev/i2c-1";
-extern int i2cd;
+//extern int i2cd;
 
 /**********Select display temperature type**************/
 #define CELSIUS       0
