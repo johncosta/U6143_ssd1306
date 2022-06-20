@@ -77,38 +77,33 @@ int ssd1306_begin(char ic2_name[20], unsigned int vccstate, unsigned int i2caddr
   }
     //ssd1306_128x32_init();  // package
 
-	OLED_WR_Byte(0xAE,OLED_CMD); //Disable display
-	OLED_WR_Byte(0x40,OLED_CMD); //---set low column address
-	OLED_WR_Byte(0xB0,OLED_CMD); //---set high column address
-	OLED_WR_Byte(0xC8,OLED_CMD); //-not offset
-	OLED_WR_Byte(0x81,OLED_CMD); //Set Contrast
+	OLED_WR_Byte(SSD1306_DISPLAYOFF,OLED_CMD);
+	OLED_WR_Byte(SSD1306_SETSTARTLINE,OLED_CMD);
+	OLED_WR_Byte(SSD1306_SETPAGE,OLED_CMD);
+	OLED_WR_Byte(SSD1306_COMSCANDEC,OLED_CMD); //-not offset
+	OLED_WR_Byte(SSD1306_SETCONTRAST,OLED_CMD); //Set Contrast
 	OLED_WR_Byte(0xff,OLED_CMD);
 	OLED_WR_Byte(0xa1,OLED_CMD);
-	OLED_WR_Byte(0xa6,OLED_CMD);
-	OLED_WR_Byte(0xa8,OLED_CMD);
+	OLED_WR_Byte(SSD1306_NORMALDISPLAY,OLED_CMD);
+	OLED_WR_Byte(SSD1306_SETMULTIPLEX,OLED_CMD);
 	OLED_WR_Byte(0x1f,OLED_CMD);
-	OLED_WR_Byte(0xd3,OLED_CMD);
-	OLED_WR_Byte(0x00,OLED_CMD);
-	OLED_WR_Byte(0xd5,OLED_CMD);
+	OLED_WR_Byte(SSD1306_SETDISPLAYOFFSET,OLED_CMD);
+	OLED_WR_Byte(HORIZONTAL_ADDRESSING_MODE,OLED_CMD);
+	OLED_WR_Byte(SSD1306_SETDISPLAYCLOCKDIV,OLED_CMD);
 	OLED_WR_Byte(0xf0,OLED_CMD);
-	OLED_WR_Byte(0xd9,OLED_CMD);
-	OLED_WR_Byte(0x22,OLED_CMD);
-	OLED_WR_Byte(0xda,OLED_CMD);
-	OLED_WR_Byte(0x02,OLED_CMD);
-	OLED_WR_Byte(0xdb,OLED_CMD);
+	OLED_WR_Byte(SSD1306_SETPRECHARGE,OLED_CMD);
+	OLED_WR_Byte(SSD1306_PAGEADDR,OLED_CMD);
+	OLED_WR_Byte(SSD1306_SETCOMPINS,OLED_CMD);
+	OLED_WR_Byte(SSD1306_SWITCHCAPVCC,OLED_CMD);
+	OLED_WR_Byte(SSD1306_SETVCOMDETECT,OLED_CMD);
 	OLED_WR_Byte(0x49,OLED_CMD);
-	OLED_WR_Byte(0x8d,OLED_CMD);
+	OLED_WR_Byte(SSD1306_CHARGEPUMP,OLED_CMD);
 	OLED_WR_Byte(0x14,OLED_CMD);
-	OLED_WR_Byte(0xaf,OLED_CMD);
+	OLED_WR_Byte(SSD1306_DISPLAYON,OLED_CMD);
 
   exit:
     return ret;
 }
-
-
-
-
-
 
 //Displays a string of characters
 void OLED_ShowString(unsigned char x,unsigned char y,unsigned char *chr,unsigned char Char_Size)
@@ -190,16 +185,16 @@ void OLED_Set_Pos(unsigned char x, unsigned char y)
 void OLED_WR_Byte(unsigned dat,unsigned cmd)
 {
 
-	if(cmd)
-	{
-		Write_IIC_Data(dat);
-	}
-	else 
-	{
-		Write_IIC_Command(dat);
-	}
+    if(cmd)
+    {
+        Write_IIC_Data(dat);
+    }
+    else
+    {
+        Write_IIC_Command(dat);
+    }
 
-  usleep(500); 
+    usleep(500);
 }
 
 //To send data

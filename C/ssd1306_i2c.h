@@ -59,94 +59,94 @@ void FirstGetIpAddress(void);
 char* GetIpAddress(void);
 unsigned char Obaintemperature(void);
 
-/**
- * @brief Inits 128x32 OLED display over i2c (based on SSD1306 controller).
- *
- * Inits 128x32 OLED display over i2c (based on SSD1306 controller)
- * This function uses hardcoded pins for i2c communication, depending on your hardware.
- * If you use non-standard pins in your project, please perform call ssd1306_i2cInitEx() and
- * ssd1306_128x32_init().
- */
-void         ssd1306_128x32_i2c_init(void);
-
-/**
- * @brief Inits 128x32 OLED display (based on ssd1306 controller).
- *
- * Inits 128x32 OLED display (based on ssd1306 controller)
- * spi or i2c bus must be initialized prior to calling this function.
- * @see ssd1306_i2cInit()
- * @see ssd1306_spiInit()
- */
-void         ssd1306_128x32_init(void);
-
-/**
- * Turns off display
- */
-void         ssd1306_displayOff(void);
-
-/**
- * Turns on display
- */
-void         ssd1306_displayOn(void);
-
-/**
- * Set display contrast, ie light intensity
- * @param contrast - contrast value to see, refer to ssd1306 datasheet
- */
-void         ssd1306_setContrast(uint8_t contrast);
-
-/**
- * Switches display to inverse mode.
- * LCD will display 0-pixels as white, and 1-pixels as black.
- * @note Not supported for SSD1331
- */
-void         ssd1306_invertMode(void);
-
-/**
- * Switches display to normal mode.
- * @note Not supported for SSD1331
- */
-void         ssd1306_normalMode(void);
-
-/**
- * @brief performs horizontal flip
- *
- * Performs horizontal flip. If you need to turn display by 180 degree,
- * please use both ssd1306_flipHorizontal() and ssd1306_flipVertical().
- *
- * @param mode - 0 to disable horizontal flip
- *               1 to enable horizontal flip
- */
-void         ssd1306_flipHorizontal(uint8_t mode);
-
-/**
- * @brief performs vertical flip
- *
- * Performs vertical flip. If you need to turn display by 180 degree,
- * please use both ssd1306_flipHorizontal() and ssd1306_flipVertical().
- *
- * @param mode - 0 to disable vertical flip
- *               1 to enable vertical flip
- */
-void         ssd1306_flipVertical(uint8_t mode);
-
-/**
- * Sets start line in gdram to start display content with
- *
- * @param line start line in range 0 - 63
- */
-void ssd1306_setStartLine(uint8_t line);
-
-/**
- * returns start line in gdram.
- */
-uint8_t ssd1306_getStartLine(void);
-
-/**
- * @}
- */
-
-#ifdef __cplusplus
-}
-#endif
+///**
+// * @brief Inits 128x32 OLED display over i2c (based on SSD1306 controller).
+// *
+// * Inits 128x32 OLED display over i2c (based on SSD1306 controller)
+// * This function uses hardcoded pins for i2c communication, depending on your hardware.
+// * If you use non-standard pins in your project, please perform call ssd1306_i2cInitEx() and
+// * ssd1306_128x32_init().
+// */
+//void         ssd1306_128x32_i2c_init(void);
+//
+///**
+// * @brief Inits 128x32 OLED display (based on ssd1306 controller).
+// *
+// * Inits 128x32 OLED display (based on ssd1306 controller)
+// * spi or i2c bus must be initialized prior to calling this function.
+// * @see ssd1306_i2cInit()
+// * @see ssd1306_spiInit()
+// */
+//void         ssd1306_128x32_init(void);
+//
+///**
+// * Turns off display
+// */
+//void         ssd1306_displayOff(void);
+//
+///**
+// * Turns on display
+// */
+//void         ssd1306_displayOn(void);
+//
+///**
+// * Set display contrast, ie light intensity
+// * @param contrast - contrast value to see, refer to ssd1306 datasheet
+// */
+//void         ssd1306_setContrast(uint8_t contrast);
+//
+///**
+// * Switches display to inverse mode.
+// * LCD will display 0-pixels as white, and 1-pixels as black.
+// * @note Not supported for SSD1331
+// */
+//void         ssd1306_invertMode(void);
+//
+///**
+// * Switches display to normal mode.
+// * @note Not supported for SSD1331
+// */
+//void         ssd1306_normalMode(void);
+//
+///**
+// * @brief performs horizontal flip
+// *
+// * Performs horizontal flip. If you need to turn display by 180 degree,
+// * please use both ssd1306_flipHorizontal() and ssd1306_flipVertical().
+// *
+// * @param mode - 0 to disable horizontal flip
+// *               1 to enable horizontal flip
+// */
+//void         ssd1306_flipHorizontal(uint8_t mode);
+//
+///**
+// * @brief performs vertical flip
+// *
+// * Performs vertical flip. If you need to turn display by 180 degree,
+// * please use both ssd1306_flipHorizontal() and ssd1306_flipVertical().
+// *
+// * @param mode - 0 to disable vertical flip
+// *               1 to enable vertical flip
+// */
+//void         ssd1306_flipVertical(uint8_t mode);
+//
+///**
+// * Sets start line in gdram to start display content with
+// *
+// * @param line start line in range 0 - 63
+// */
+//void ssd1306_setStartLine(uint8_t line);
+//
+///**
+// * returns start line in gdram.
+// */
+//uint8_t ssd1306_getStartLine(void);
+//
+///**
+// * @}
+// */
+//
+//#ifdef __cplusplus
+//}
+//#endif
 #endif				/* SSD1306_I2C_H_ */
