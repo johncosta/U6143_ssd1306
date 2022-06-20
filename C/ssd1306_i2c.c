@@ -287,11 +287,13 @@ void LCD_DisplayTemperature()
     unsigned int temp=0;
     FILE * fp;
 
-    temp = Obaintemperature();                  //Gets the temperature of the CPU
-    fprintf(stdout, "Found temp: `%i`", temp);
+    temp = Obaintemperature();
+    fprintf(stdout, "Found temp: `%i`\r\n", temp);
 
-    fp = popen("top -bn1 | grep load | awk '{printf \"%.2f\", $(NF-2)}'","r");    //Gets the load on the CPU
-    fgets(buffer, sizeof (buffer),fp);                                    //Read the CPU load
+    fp = popen("top -bn1 | grep load | awk '{printf \"%.2f\", $(NF-2)}'", "r");
+    fprintf(stdout, "Found cpu load: `%i`\r\n", fp);
+
+    fgets(buffer, sizeof (buffer), fp);                                    //Read the CPU load
     pclose(fp);
     buffer[3] = '\0';
   
