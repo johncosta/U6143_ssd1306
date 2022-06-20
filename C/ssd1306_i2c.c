@@ -443,15 +443,15 @@ void LCD_Display(unsigned char symbol)
     switch(symbol)
     {
         case 0:
-            printf("Display Temperature...");
+            printf("Display Temperature...\r\n");
             LCD_DisplayTemperature();
         break;
         case 1:
-            printf("Display CPU/Mem...");
+            printf("Display CPU/Mem...\r\n");
             LCD_DisPlayCpuMemory();
             break;
         case 2:
-            printf("Display Diskspace...");
+            printf("Display Diskspace...\r\n");
             LCD_DisplaySdMemory();
             break;
         default:
