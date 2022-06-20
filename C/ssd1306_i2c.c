@@ -28,7 +28,7 @@ int setup(void)
     printf("Initializing LCD_Display...\r\n");
     ret = ssd1306_begin(SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS);
     if (ret > 0) {
-        goto ret;
+        goto exit;
     }
     printf("Initialized.\r\n");
 
