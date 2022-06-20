@@ -24,6 +24,7 @@ int main(void)
     unsigned char symbol = 0;
     while(1)
     {
+        fflush(stdout);
         fprintf(stdout, "Choosing display: `%i`", symbol);
         LCD_Display(symbol);
         sleep(1);
