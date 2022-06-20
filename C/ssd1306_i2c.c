@@ -58,19 +58,23 @@ int ssd1306_begin(char ic2_name[20], unsigned int vccstate, unsigned int i2caddr
     * open file to read and write, and start the cursor for both
     * at the beginning of the file
     */
-    i2cd = open(ic2_name, O_RDWR); if (i2cd < 0) {
-        fprintf(stderr, "Device I2C-1 failed to open\r\n");
+    ic2_file_descriptor = open(ic2_name, O_RDWR); if (i2cd < 0) {
+        fprintf(stderr, "Device I2C-1 failed to opens the file "
+                        "specified by `%s`\r\n", ic2_name);
         ret = 1;
         goto exit;
     } else {
-        printf("address of i2c: `%i`", i2cd);
+        printf("address of i2c: `%i`\r\n", i2cd);
     }
 
-    if (ioctl(i2cd, I2C_SLAVE_FORCE, i2caddr) < 0)
-    {
-        fprintf(stderr, "Device I2C-1 failed to initialize\r\n");
+    int rc = ioctl(ic2_file_descriptor, I2C_SLAVE_FORCE, i2caddr); if (rc < 0) {
+        fprintf(stderr, "Device I2C-1 failed to system call "
+                        "manipulates the underlying device parameters\r\n");
+        fprintf(stderr, "ErrorCode: %s", -errno);
         ret = 1;
         goto exit;
+    } else {
+        printf("Found address as: `%i`/r/n", i2caddr);
     }
 
 	OLED_WR_Byte(SSD1306_DISPLAYOFF,OLED_CMD);
