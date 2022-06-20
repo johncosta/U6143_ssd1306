@@ -65,7 +65,7 @@ int ssd1306_begin(char ic2_name[20], unsigned int vccstate, unsigned int i2caddr
         ret = 1;
         goto exit;
     } else {
-        printf("address of i2c: `%i`\r\n", ic2_file_descriptor);
+        printf("ic2_file_descriptor: `%i`\r\n", ic2_file_descriptor);
     }
 
     int rc = ioctl(ic2_file_descriptor, I2C_SLAVE_FORCE, i2caddr); if (rc < 0) {
@@ -75,7 +75,7 @@ int ssd1306_begin(char ic2_name[20], unsigned int vccstate, unsigned int i2caddr
         ret = 1;
         goto exit;
     } else {
-        printf("Found address as: `%i`/r/n", i2caddr);
+        printf("Found i2caddr as: `%i`\r\n", i2caddr);
     }
 
 	OLED_WR_Byte(SSD1306_DISPLAYOFF,OLED_CMD);
