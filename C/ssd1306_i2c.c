@@ -279,7 +279,7 @@ void OLED_Clear(void)
 /*
 *    LCD displays CPU temperature and other information
 */
-void LCD_DisplayTemperature(void)
+void LCD_DisplayTemperature()
 {
   unsigned char symbol=0;
   unsigned int temp=0;
@@ -295,8 +295,8 @@ void LCD_DisplayTemperature(void)
   OLED_DrawBMP(0,0,128,4,BMP,TEMPERATURE_TYPE);
   if (IP_SWITCH == IP_DISPLAY_OPEN)
   {
-    strcpy(IPSource,GetIpAddress());   //Get the IP address of the device's wireless network card
-    OLED_ShowString(0,0,IPSource,8);          //Send the IP address to the lower machine
+    // strcpy(IPSource,GetIpAddress());   //Get the IP address of the device's wireless network card
+    OLED_ShowString(0,0, &GetIpAddress(),8);          //Send the IP address to the lower machine
   }
   else
   {
