@@ -4,6 +4,7 @@
 #include <sys/vfs.h>
 #include <stdint.h>
 #include "ssd1306_i2c.h"
+#include "ssd1306_commands.h"
 #include "bmp.h"
 #include "oled_fonts.h"
 #include <sys/types.h>
