@@ -38,8 +38,8 @@ extern int i2cd;
 
 #define SSD1306_LCDWIDTH                  128
 #define SSD1306_LCDHEIGHT                 32
-int setup(char [20]);
-int ssd1306_begin(char [20], unsigned int switchvcc, unsigned int i2caddr); //switchvcc should be SSD1306_SWITCHCAPVCC
+int setup(char *[20]);
+int ssd1306_begin(char *[20], unsigned int switchvcc, unsigned int i2caddr); //switchvcc should be SSD1306_SWITCHCAPVCC
 void OLED_ShowString(unsigned char x,unsigned char y, unsigned char *p,unsigned char Char_Size);
 void OLED_ShowChar(unsigned char x,unsigned char y,unsigned char chr,unsigned char Char_Size);
 void OLED_Set_Pos(unsigned char x, unsigned char y);
