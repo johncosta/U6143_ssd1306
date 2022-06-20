@@ -110,6 +110,7 @@ int ssd1306_begin(char ic2_name[20], unsigned int vccstate, unsigned int i2caddr
 //Displays a string of characters
 void OLED_ShowString(unsigned char x,unsigned char y,unsigned char *chr,unsigned char Char_Size)
 {
+    printf("Displaying: `%s`\r\n ", chr);
 	unsigned char j=0;
 	while (chr[j]!='\0')
 	{		OLED_ShowChar(x,y,chr[j],Char_Size);
