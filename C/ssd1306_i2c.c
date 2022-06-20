@@ -74,7 +74,6 @@ int ssd1306_begin(char ic2_name[20], unsigned int vccstate, unsigned int i2caddr
         ret = 1;
         goto exit;
     }
-    //ssd1306_128x32_init();  // package
 
 	OLED_WR_Byte(SSD1306_DISPLAYOFF,OLED_CMD);
 	OLED_WR_Byte(SSD1306_SETSTARTLINE,OLED_CMD);
@@ -186,12 +185,12 @@ void OLED_WR_Byte(unsigned dat, unsigned cmd)
 
     if(cmd)
     {
-        fprintf(stdout, "Writing command: `%i`\r\n", cmd);
+        // fprintf(stdout, "Writing command: `%i`\r\n", cmd); // TODO: debug
         Write_IIC_Command(cmd);
     }
     else
     {
-        fprintf(stdout, "Writing command: `%i`\r\n", dat);
+        // fprintf(stdout, "Writing command: `%i`\r\n", dat); //TODO: debug
         Write_IIC_Data(dat);
     }
 
