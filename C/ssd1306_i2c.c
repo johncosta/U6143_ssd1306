@@ -19,11 +19,25 @@
 #include <stdlib.h>
 
 
+int setup(void)
+{
+    printf("Initializing LCD_Display...\r\n");
+    ssd1306_begin(SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS);      //LCD Screen initialization
+    printf("Initialized.\r\n");
+
+    if(i2cd<0)
+    {
+        printf("I2C device failed to open\r\n");
+        return 0;
+    }
+    usleep(150*1000);                                                  //Short delay Ensure the normal response of the lower function
+}
+
 char IPSource[20]={0};
 int i2cd;
 
 // Init SSD1306
-void ssd1306_begin(unsigned int vccstate, unsigned int i2caddr)
+int ssd1306_begin(unsigned int vccstate, unsigned int i2caddr)
 {
   unsigned char buffer[20]={0};
   unsigned char count=0;
@@ -36,7 +50,7 @@ void ssd1306_begin(unsigned int vccstate, unsigned int i2caddr)
    */
   unsigned char i2c[20]="/dev/i2c-1";
   i2cd = open(i2c, O_RDWR);
-  if (i2cd < 0) 
+  if (i2cd < 0)
   {
 	  fprintf(stderr, "Device I2C-1 failed to initialize\r\n");
 	  ret = 1;
@@ -48,11 +62,11 @@ void ssd1306_begin(unsigned int vccstate, unsigned int i2caddr)
 	  ret = 1;
 	  goto exit;
   }
-	OLED_WR_Byte(0xAE,OLED_CMD);//Disable display
-	OLED_WR_Byte(0x40,OLED_CMD);//---set low column address
-	OLED_WR_Byte(0xB0,OLED_CMD);//---set high column address
-	OLED_WR_Byte(0xC8,OLED_CMD);//-not offset
-	OLED_WR_Byte(0x81,OLED_CMD);//Set Contrast
+	OLED_WR_Byte(0xAE,OLED_CMD); //Disable display
+	OLED_WR_Byte(0x40,OLED_CMD); //---set low column address
+	OLED_WR_Byte(0xB0,OLED_CMD); //---set high column address
+	OLED_WR_Byte(0xC8,OLED_CMD); //-not offset
+	OLED_WR_Byte(0x81,OLED_CMD); //Set Contrast
 	OLED_WR_Byte(0xff,OLED_CMD);
 	OLED_WR_Byte(0xa1,OLED_CMD);
 	OLED_WR_Byte(0xa6,OLED_CMD);

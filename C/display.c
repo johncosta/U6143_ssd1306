@@ -2,28 +2,18 @@
 Demo for ssd1306 i2c driver for  Raspberry Pi 
 ******/
 #include <stdio.h>
-#include "ssd1306_i2c.h"
-#include "time.h"
 #include <unistd.h>
-
+#include "ssd1306_i2c.h"
 
 /*
  entrypoint for binary `display`
  */
 int main(void) 
 {
-    unsigned char symbol=0;
+    unsigned char symbol = 0;
 
-    printf("Initializing LCD_Display...\r\n");
-    ssd1306_begin(SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS);      //LCD Screen initialization
-    printf("Initialized.\r\n");
+    setup();
 
-    if(i2cd<0)
-    {
-        printf("I2C device failed to open\r\n");
-        return 0;
-    }
-    usleep(150*1000);                                                  //Short delay Ensure the normal response of the lower function
     FirstGetIpAddress();                        //Get IP address
     while(1)
     {
