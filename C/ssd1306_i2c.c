@@ -58,13 +58,14 @@ int ssd1306_begin(char ic2_name[20], unsigned int vccstate, unsigned int i2caddr
     * open file to read and write, and start the cursor for both
     * at the beginning of the file
     */
-    i2cd = open(ic2_name, O_RDWR);
-    if (i2cd < 0)
-    {
+    i2cd = open(ic2_name, O_RDWR); if (i2cd < 0) {
         fprintf(stderr, "Device I2C-1 failed to open\r\n");
         ret = 1;
         goto exit;
+    } else {
+        printf("address of i2c: `%i`", i2cd)
     }
+
     if (ioctl(i2cd, I2C_SLAVE_FORCE, i2caddr) < 0)
     {
         fprintf(stderr, "Device I2C-1 failed to initialize\r\n");
