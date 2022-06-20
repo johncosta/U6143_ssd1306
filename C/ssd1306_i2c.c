@@ -217,7 +217,7 @@ void Write_IIC_Command(unsigned char IIC_Command)
 
 
 /***********Display the BMP image  128X32  Starting point coordinates(x,y),The range of x 0~127   The range of y 0~4*****************/
-void OLED_DrawBMP(unsigned char x0, unsigned char y0,unsigned char x1, unsigned char y1,unsigned char BMP[][512],unsigned char symbol)
+void OLED_DrawBMP(unsigned char x0, unsigned char y0, unsigned char x1, unsigned char y1,unsigned char BMP[][512],unsigned char symbol)
 {
     printf("Drawing BMP: x0: `%s`. y0: `%s` \r\n", x0, y0);
     unsigned int j = 0;
@@ -306,7 +306,7 @@ void LCD_DisplayTemperature()
     fprintf(stdout, "Found cpu load: `%s`\r\n", buffer);
 
     OLED_Clear();
-    OLED_DrawBMP("0","0","128","4", BMP,TEMPERATURE_TYPE);
+    OLED_DrawBMP(0,0,128,4, BMP,TEMPERATURE_TYPE);
 
     if (IP_SWITCH == IP_DISPLAY_OPEN)
     {
