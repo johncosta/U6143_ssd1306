@@ -16,6 +16,8 @@ int main(void)
 
     printf("Initializing LCD_Display...\r\n");
     ssd1306_begin(SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS);      //LCD Screen initialization
+    printf("Initialized.\r\n");
+
     if(i2cd<0)
     {
         printf("I2C device failed to open\r\n");

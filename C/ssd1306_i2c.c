@@ -27,15 +27,19 @@ void ssd1306_begin(unsigned int vccstate, unsigned int i2caddr)
   unsigned char count=0;
   FILE* fp;
   unsigned char buffer[20]={0};
+
+  /*
+   * open file to read and write, and start the cursor for both
+   * at the beginning of the file
+   */
   unsigned char i2c[20]="/dev/i2c-1";
-  // I2C Init
-  i2cd = open(i2c,O_RDWR);
+  i2cd = open(i2c, O_RDWR);
   if (i2cd < 0) 
   {
-	  fprintf(stderr, "Device I2C-1 failed to initialize\n");
-	  return;
+	  printf(stderr, "Device I2C-1 failed to initialize\r\n");
+	  exit(1);
   }
- if (ioctl(i2cd, I2C_SLAVE_FORCE, i2caddr) < 0)
+  if (ioctl(i2cd, I2C_SLAVE_FORCE, i2caddr) < 0)
   {
     return;
   }
