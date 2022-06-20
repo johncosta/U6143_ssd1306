@@ -294,7 +294,7 @@ void LCD_DisplayTemperature()
     char* value = fgets(buffer, sizeof (buffer), fp);
     pclose(fp);
     buffer[3] = '\0';
-    fprintf(stdout, "Found cpu load: `%%`\r\n", value);
+    fprintf(stdout, "Found cpu load: `%s`\r\n", value);
 
 
     OLED_Clear();                                        //Remove the interface
