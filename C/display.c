@@ -4,7 +4,7 @@ Demo for ssd1306 i2c driver for  Raspberry Pi
 #include <unistd.h>
 #include "ssd1306_i2c.h"
 
-const unsigned char i2c[20] = "/dev/i2c-0";
+unsigned char i2c[20] = "/dev/i2c-0";
 
 /*
  entrypoint for binary `display`
