@@ -34,6 +34,7 @@ int setup(unsigned char ic2_name[20], unsigned int wait)
 
     fprintf (stdout, "Waiting for: `%i`.\r\n", wait);
     usleep(wait);   //Short delay Ensure the normal response of the lower function
+    printf("Done waiting.\r\n");
 
     exit:
         if (ret) {
