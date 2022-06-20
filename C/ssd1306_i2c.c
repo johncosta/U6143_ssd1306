@@ -186,12 +186,12 @@ void OLED_WR_Byte(unsigned dat, unsigned cmd)
 
     if(cmd)
     {
-        fprintf(stdout, "Writing command: `%i`", cmd)
+        fprintf(stdout, "Writing command: `%i`\r\n", cmd);
         Write_IIC_Command(cmd);
     }
     else
     {
-        fprintf(stdout, "Writing command: `%i`", dat)
+        fprintf(stdout, "Writing command: `%i`\r\n", dat);
         Write_IIC_Data(dat);
     }
 
