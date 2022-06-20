@@ -63,7 +63,7 @@ int ssd1306_begin(char ic2_name[20], unsigned int vccstate, unsigned int i2caddr
         ret = 1;
         goto exit;
     } else {
-        printf("address of i2c: `%i`", i2cd)
+        printf("address of i2c: `%i`", i2cd);
     }
 
     if (ioctl(i2cd, I2C_SLAVE_FORCE, i2caddr) < 0)
