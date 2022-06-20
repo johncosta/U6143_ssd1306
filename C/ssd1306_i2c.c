@@ -19,6 +19,7 @@
 #include <linux/i2c-dev.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <errno.h>
 
 /*
  * Set up LCD Display
