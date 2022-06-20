@@ -223,10 +223,10 @@ void OLED_DrawBMP(unsigned char x0, unsigned char y0,unsigned char x1, unsigned 
     unsigned char x, y;
   
     if( y1 % 8 == 0) {
-        y = y 1/8;
+        y = y1 / 8;
     }
     else {
-        y = y 1/8 + 1;
+        y = y1 / 8 + 1;
     }
     printf("OLED_DrawBMP - Calculated y as: `%s`", y);
 
