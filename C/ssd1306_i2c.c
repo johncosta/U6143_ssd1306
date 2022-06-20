@@ -174,7 +174,9 @@ void OLED_ShowNum(unsigned char x,unsigned char y,unsigned int num,unsigned char
 
 //Coordinate setting
 void OLED_Set_Pos(unsigned char x, unsigned char y) 
-{ 	OLED_WR_Byte(0xb0+y,OLED_CMD);
+{
+    printf(stdout, "Setting co-ordinates...")
+    OLED_WR_Byte(SSD1306_SETPAGE + y,OLED_CMD);
 	OLED_WR_Byte(((x&0xf0)>>4)|0x10,OLED_CMD);
 	OLED_WR_Byte((x&0x0f),OLED_CMD); 
 } 
@@ -217,11 +219,17 @@ void Write_IIC_Command(unsigned char IIC_Command)
 /***********Display the BMP image  128X32  Starting point coordinates(x,y),The range of x 0~127   The range of y 0~4*****************/
 void OLED_DrawBMP(unsigned char x0, unsigned char y0,unsigned char x1, unsigned char y1,unsigned char BMP[][512],unsigned char symbol)
 { 	
- unsigned int j=0;
- unsigned char x,y;
+    unsigned int j=0;
+    unsigned char x, y;
   
-  if(y1%8==0) y=y1/8;      
-  else y=y1/8+1;
+    if( y1 % 8 == 0) {
+        y = y 1/8;
+    }
+    else {
+        y = y 1/8 + 1;
+    }
+    printf("OLED_DrawBMP - Calculated y as: `%s`", y);
+
 	for(y=y0;y<y1;y++)
 	{
 		OLED_Set_Pos(x0,y);
@@ -291,13 +299,12 @@ void LCD_DisplayTemperature()
     fprintf(stdout, "Found temp: `%i`\r\n", temp);
 
     fp = popen("top -bn1 | grep load | awk '{printf \"%.2f\", $(NF-2)}'", "r");
-    char* value = fgets(buffer, sizeof (buffer), fp);
+    fgets(buffer, sizeof (buffer), fp);
     pclose(fp);
     buffer[4] = '\0';
-    fprintf(stdout, "Found cpu load: `%s`\r\n", value);
+    fprintf(stdout, "Found cpu load: `%s`\r\n", buffer);
 
-
-    OLED_Clear();                                        //Remove the interface
+    OLED_Clear();
     OLED_DrawBMP(0,0,128,4,BMP,TEMPERATURE_TYPE);
 
     if (IP_SWITCH == IP_DISPLAY_OPEN)
