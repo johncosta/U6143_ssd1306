@@ -45,7 +45,7 @@ int setup(unsigned char ic2_name[20], unsigned int wait)
         return ret;
 }
 
-int i2cd;
+int ic2_file_descriptor;
 
 // Init SSD1306
 int ssd1306_begin(char ic2_name[20], unsigned int vccstate, unsigned int i2caddr)
