@@ -542,8 +542,8 @@ static const uint8_t PROGMEM s_oled128x32_initData[] =
                 SSD1306_DISPLAYON,
         };
 
-static void ssd1306_setBlock(lcduint_t x, lcduint_t y, lcduint_t w)
-{
+//static void ssd1306_setBlock(lcduint_t x, lcduint_t y, lcduint_t w)
+//{
 //    ssd1306_intf.start();
 //    if (ssd1306_intf.spi)
 //        ssd1306_spiDataMode(0);
@@ -565,7 +565,7 @@ static void ssd1306_setBlock(lcduint_t x, lcduint_t y, lcduint_t w)
 //        ssd1306_intf.start();
 //        ssd1306_intf.send(0x40);
 //    }
-}
+//}
 
 static void ssd1306_nextPage(void)
 {
