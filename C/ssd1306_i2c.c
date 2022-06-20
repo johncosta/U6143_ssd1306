@@ -20,6 +20,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include "lcd/lcd_common.h"
+#include "intf/ssd1306_interface.h"
 
 /*
  * Set up LCD Display
