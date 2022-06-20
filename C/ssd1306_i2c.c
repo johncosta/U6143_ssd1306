@@ -116,7 +116,8 @@ void OLED_ShowString(unsigned char x,unsigned char y,unsigned char *chr,unsigned
 }
 
 void OLED_ShowChar(unsigned char x,unsigned char y,unsigned char chr,unsigned char Char_Size)
-{      	
+{
+    printf("In ShowChar...\r\n");
 	unsigned char c=0,i=0;	
 		c=chr-' ';    //Get the offset value	
 		if(x>SSD1306_LCDWIDTH-1){x=0;y=y+2;}
@@ -136,6 +137,7 @@ void OLED_ShowChar(unsigned char x,unsigned char y,unsigned char chr,unsigned ch
 				OLED_WR_Byte(F6x8[c][i],OLED_DATA);
 				
 			}
+    printf("Out ShowChar.\r\n");
 }
 
 unsigned int oled_pow(unsigned char m,unsigned char n)
@@ -307,15 +309,15 @@ void LCD_DisplayTemperature()
     OLED_Clear();
     OLED_DrawBMP(0,0,128,4, BMP,TEMPERATURE_TYPE);
 
-    if (IP_SWITCH == IP_DISPLAY_OPEN)
-    {
+//    if (IP_SWITCH == IP_DISPLAY_OPEN)
+//    {
     // strcpy(IPSource,GetIpAddress());   //Get the IP address of the device's wireless network card
     OLED_ShowString(0,0, GetIpAddress(),8);          //Send the IP address to the lower machine
-    }
-  else
-  {
-    OLED_ShowString(0,0,CUSTOM_DISPLAY,8);          //Send the IP address to the lower machine
-  }
+//    }
+//  else
+//  {
+//    OLED_ShowString(0,0,CUSTOM_DISPLAY,8);          //Send the IP address to the lower machine
+//  }
 
   if(temp>=100)                                                  
   {
