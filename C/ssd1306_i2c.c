@@ -588,10 +588,10 @@ void ssd1306_displayOn()
 
 void ssd1306_setContrast(uint8_t contrast)
 {
-    ssd1306_commandStart();
-    ssd1306_intf.send(SSD1306_SETCONTRAST);
-    ssd1306_intf.send(contrast);
-    ssd1306_intf.stop();
+//    ssd1306_commandStart();
+//    ssd1306_intf.send(SSD1306_SETCONTRAST);
+//    ssd1306_intf.send(contrast);
+//    ssd1306_intf.stop();
 }
 
 void ssd1306_invertMode()
