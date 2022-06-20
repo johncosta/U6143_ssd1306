@@ -20,7 +20,7 @@ int main(void)
     }
 
     // TODO: avoid this
-    FirstGetIpAddress();
+    // FirstGetIpAddress();
 
     unsigned char symbol = 0;
     while(1)

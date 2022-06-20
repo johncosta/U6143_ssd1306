@@ -19,8 +19,6 @@
 #include <linux/i2c-dev.h>
 #include <fcntl.h>
 #include <stdlib.h>
-#include "lcd/lcd_common.h"
-#include "intf/ssd1306_interface.h"
 
 /*
  * Set up LCD Display
@@ -30,14 +28,13 @@ int setup(unsigned char ic2_name[20], unsigned int wait)
     int ret = 0;
 
     printf("Initializing LCD_Display...\r\n");
-    ret = ssd1306_begin(ic2_name, SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS);
-    if (ret > 0) {
+    ret = ssd1306_begin(ic2_name, SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS); if (ret > 0) {
         goto exit;
     }
-    printf("Initialized.\r\n");
+    printf("Initialized LCD.\r\n");
 
     fprintf (stdout, "Waiting for: `%i`.\r\n", wait);
-    usleep(wait);   //Short delay Ensure the normal response of the lower function
+    usleep(wait);
     printf("Done waiting.\r\n");
 
     exit:
@@ -99,8 +96,8 @@ int ssd1306_begin(char ic2_name[20], unsigned int vccstate, unsigned int i2caddr
 	OLED_WR_Byte(0x14,OLED_CMD);
 	OLED_WR_Byte(SSD1306_DISPLAYON,OLED_CMD);
 
-  exit:
-    return ret;
+    exit:
+        return ret;
 }
 
 //Displays a string of characters
