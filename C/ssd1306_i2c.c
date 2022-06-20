@@ -269,7 +269,7 @@ void OLED_Clear(void)
     printf("Clearing Display...\r\n");
 	for(unsigned char i = 0; i < 4; i++)
 	{
-        fprintf(stdout, "Clearing page: `%i`", i)
+        fprintf(stdout, "Clearing page: `%i`\r\n", i);
 		OLED_WR_Byte(SSD1306_SETPAGE + i,OLED_CMD);
 		OLED_WR_Byte(HORIZONTAL_ADDRESSING_MODE,OLED_CMD);
 		OLED_WR_Byte(0x10,OLED_CMD);
