@@ -10,10 +10,11 @@ Demo for ssd1306 i2c driver for  Raspberry Pi
  */
 int main(void) 
 {
+    if int ret = setup(); ret > 0 {
+        exit(ret);
+    }
+
     unsigned char symbol = 0;
-
-    setup();
-
     FirstGetIpAddress();                        //Get IP address
     while(1)
     {
@@ -27,5 +28,7 @@ int main(void)
           symbol=0;
         }
     }
-    return 0;
+
+    exit:
+        return 0;
 }
