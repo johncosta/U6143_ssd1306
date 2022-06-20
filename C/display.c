@@ -1,7 +1,7 @@
 /******
 Demo for ssd1306 i2c driver for  Raspberry Pi 
 ******/
-#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include "ssd1306_i2c.h"
 
