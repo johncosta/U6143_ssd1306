@@ -463,7 +463,7 @@ char* FirstGetIpAddress(void)
     printf("Retrieving ip address...\r\n");
     char* ip_address = GetIpAddress();
     fprintf(stdout, "Found: `%s`\r\n", ip_address);
-    return ip_address
+    return ip_address;
 }
 
 char* GetIpAddress(void)
