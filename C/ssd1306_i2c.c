@@ -2,6 +2,7 @@
 #include <string.h>
 #include <sys/sysinfo.h>
 #include <sys/vfs.h>
+#include <stdint.h>
 #include "ssd1306_i2c.h"
 #include "bmp.h"
 #include "oled_fonts.h"
@@ -17,7 +18,6 @@
 #include <linux/i2c-dev.h>
 #include <fcntl.h>
 #include <stdlib.h>
-#include <stdint.h>
 
 /*
  * Set up LCD Display
