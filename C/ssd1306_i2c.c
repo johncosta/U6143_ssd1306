@@ -71,28 +71,28 @@ int ssd1306_begin(char ic2_name[20], unsigned int vccstate, unsigned int i2caddr
 	  ret = 1;
 	  goto exit;
   }
-	OLED_WR_Byte(0xAE,OLED_CMD); //Disable display
-	OLED_WR_Byte(0x40,OLED_CMD); //---set low column address
-	OLED_WR_Byte(0xB0,OLED_CMD); //---set high column address
-	OLED_WR_Byte(0xC8,OLED_CMD); //-not offset
-	OLED_WR_Byte(0x81,OLED_CMD); //Set Contrast
-	OLED_WR_Byte(0xff,OLED_CMD);
-	OLED_WR_Byte(0xa1,OLED_CMD);
-	OLED_WR_Byte(0xa6,OLED_CMD);
-	OLED_WR_Byte(0xa8,OLED_CMD);
-	OLED_WR_Byte(0x1f,OLED_CMD);
-	OLED_WR_Byte(0xd3,OLED_CMD);
-	OLED_WR_Byte(0x00,OLED_CMD);
-	OLED_WR_Byte(0xd5,OLED_CMD);
-	OLED_WR_Byte(0xf0,OLED_CMD);
-	OLED_WR_Byte(0xd9,OLED_CMD);
-	OLED_WR_Byte(0x22,OLED_CMD);
-	OLED_WR_Byte(0xda,OLED_CMD);
-	OLED_WR_Byte(0x02,OLED_CMD);
-	OLED_WR_Byte(0xdb,OLED_CMD);
-	OLED_WR_Byte(0x49,OLED_CMD);
-	OLED_WR_Byte(0x8d,OLED_CMD);
-	OLED_WR_Byte(0x14,OLED_CMD);
+//	OLED_WR_Byte(0xAE,OLED_CMD); //Disable display
+//	OLED_WR_Byte(0x40,OLED_CMD); //---set low column address
+//	OLED_WR_Byte(0xB0,OLED_CMD); //---set high column address
+//	OLED_WR_Byte(0xC8,OLED_CMD); //-not offset
+//	OLED_WR_Byte(0x81,OLED_CMD); //Set Contrast
+//	OLED_WR_Byte(0xff,OLED_CMD);
+//	OLED_WR_Byte(0xa1,OLED_CMD);
+//	OLED_WR_Byte(0xa6,OLED_CMD);
+//	OLED_WR_Byte(0xa8,OLED_CMD);
+//	OLED_WR_Byte(0x1f,OLED_CMD);
+//	OLED_WR_Byte(0xd3,OLED_CMD);
+//	OLED_WR_Byte(0x00,OLED_CMD);
+//	OLED_WR_Byte(0xd5,OLED_CMD);
+//	OLED_WR_Byte(0xf0,OLED_CMD);
+//	OLED_WR_Byte(0xd9,OLED_CMD);
+//	OLED_WR_Byte(0x22,OLED_CMD);
+//	OLED_WR_Byte(0xda,OLED_CMD);
+//	OLED_WR_Byte(0x02,OLED_CMD);
+//	OLED_WR_Byte(0xdb,OLED_CMD);
+//	OLED_WR_Byte(0x49,OLED_CMD);
+//	OLED_WR_Byte(0x8d,OLED_CMD);
+//	OLED_WR_Byte(0x14,OLED_CMD);
 	OLED_WR_Byte(0xaf,OLED_CMD);
 
   exit:
