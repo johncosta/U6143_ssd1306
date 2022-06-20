@@ -306,7 +306,7 @@ void LCD_DisplayTemperature()
     fprintf(stdout, "Found cpu load: `%s`\r\n", buffer);
 
     OLED_Clear();
-    OLED_DrawBMP(0,0,128,4,BMP,TEMPERATURE_TYPE);
+    OLED_DrawBMP("0","0","128","4", BMP,TEMPERATURE_TYPE);
 
     if (IP_SWITCH == IP_DISPLAY_OPEN)
     {
