@@ -443,7 +443,7 @@ void LCD_Display(unsigned char symbol)
     switch(symbol)
     {
         case 0:
-            printf("Display Tempature...");
+            printf("Display Temperature...");
             LCD_DisplayTemperature();
         break;
         case 1:
