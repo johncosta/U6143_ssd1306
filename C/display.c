@@ -27,9 +27,7 @@ int main(void)
         fflush(stdout);
         fprintf(stdout, "Choosing display: `%i`\r\n", symbol);
         LCD_Display(symbol);
-        sleep(1);
-        sleep(1);
-        sleep(1);
+        sleep(4);
         symbol++;
         if(symbol==3)
         {
