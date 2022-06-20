@@ -291,19 +291,21 @@ void LCD_DisplayTemperature()
     fprintf(stdout, "Found temp: `%i`\r\n", temp);
 
     fp = popen("top -bn1 | grep load | awk '{printf \"%.2f\", $(NF-2)}'", "r");
-    fprintf(stdout, "Found cpu load: `%i`\r\n", fp);
-
-    fgets(buffer, sizeof (buffer), fp);                                    //Read the CPU load
+    fgets(buffer, sizeof (buffer), fp);
     pclose(fp);
+    fprintf(stdout, "Found cpu load: `%i`\r\n", buffer);
+
     buffer[3] = '\0';
-  
+
+
     OLED_Clear();                                        //Remove the interface
     OLED_DrawBMP(0,0,128,4,BMP,TEMPERATURE_TYPE);
-  if (IP_SWITCH == IP_DISPLAY_OPEN)
-  {
+
+    if (IP_SWITCH == IP_DISPLAY_OPEN)
+    {
     // strcpy(IPSource,GetIpAddress());   //Get the IP address of the device's wireless network card
     OLED_ShowString(0,0, GetIpAddress(),8);          //Send the IP address to the lower machine
-  }
+    }
   else
   {
     OLED_ShowString(0,0,CUSTOM_DISPLAY,8);          //Send the IP address to the lower machine
