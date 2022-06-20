@@ -25,9 +25,10 @@ int i2cd;
 // Init SSD1306
 void ssd1306_begin(unsigned int vccstate, unsigned int i2caddr)
 {
-  unsigned char count=0;
-  FILE* fp;
   unsigned char buffer[20]={0};
+  unsigned char count=0;
+  int ret = 0;
+  FILE* fp;
 
   /*
    * open file to read and write, and start the cursor for both
@@ -38,11 +39,14 @@ void ssd1306_begin(unsigned int vccstate, unsigned int i2caddr)
   if (i2cd < 0) 
   {
 	  fprintf(stderr, "Device I2C-1 failed to initialize\r\n");
-	  exit(1);
+	  ret = 1;
+	  goto exit;
   }
   if (ioctl(i2cd, I2C_SLAVE_FORCE, i2caddr) < 0)
   {
-    return;
+      fprintf(stderr, "Device I2C-1 failed to initialize\r\n");
+	  ret = 1;
+	  goto exit;
   }
 	OLED_WR_Byte(0xAE,OLED_CMD);//Disable display
 	OLED_WR_Byte(0x40,OLED_CMD);//---set low column address
@@ -66,7 +70,10 @@ void ssd1306_begin(unsigned int vccstate, unsigned int i2caddr)
 	OLED_WR_Byte(0x49,OLED_CMD);
 	OLED_WR_Byte(0x8d,OLED_CMD);
 	OLED_WR_Byte(0x14,OLED_CMD);
-	OLED_WR_Byte(0xaf,OLED_CMD); 
+	OLED_WR_Byte(0xaf,OLED_CMD);
+
+  exit:
+    return ret;
 }
 
 
