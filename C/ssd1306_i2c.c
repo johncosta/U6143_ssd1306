@@ -181,16 +181,16 @@ void OLED_Set_Pos(unsigned char x, unsigned char y)
 } 
 
 //Write a byte
-void OLED_WR_Byte(unsigned dat,unsigned cmd)
+void OLED_WR_Byte(unsigned dat, unsigned cmd)
 {
 
     if(cmd)
     {
-        Write_IIC_Data(dat);
+        Write_IIC_Command(dat);
     }
     else
     {
-        Write_IIC_Command(dat);
+        Write_IIC_Data(dat);
     }
 
     usleep(500);
@@ -265,14 +265,15 @@ void OLED_ClearLint(unsigned char x1,unsigned char x2)
 }	
 
 void OLED_Clear(void)  
-{  
-	unsigned char i,n;		    
-	for(i=0;i<4;i++)  
-	{  
-		OLED_WR_Byte (0xb0+i,OLED_CMD);  
-		OLED_WR_Byte (0x00,OLED_CMD);      
-		OLED_WR_Byte (0x10,OLED_CMD);     
-		for(n=0;n<128;n++)OLED_WR_Byte(0,OLED_DATA); 
+{
+    printf("Clearing Display...\r\n");
+	for(unsigned char i = 0; i < 4; i++)
+	{
+        fprintf(stdout, "Clearing page: `%i`", i)
+		OLED_WR_Byte(SSD1306_SETPAGE + i,OLED_CMD);
+		OLED_WR_Byte(HORIZONTAL_ADDRESSING_MODE,OLED_CMD);
+		OLED_WR_Byte(0x10,OLED_CMD);
+		for(unsigned char n = 0; n < 128; n++)OLED_WR_Byte(0,OLED_DATA);
 	} 
 }
 
@@ -281,17 +282,19 @@ void OLED_Clear(void)
 */
 void LCD_DisplayTemperature()
 {
-  unsigned int temp=0;
-  FILE * fp;
-  unsigned char  buffer[80] = {0};
-  temp = Obaintemperature();                  //Gets the temperature of the CPU
-  fp=popen("top -bn1 | grep load | awk '{printf \"%.2f\", $(NF-2)}'","r");    //Gets the load on the CPU
-  fgets(buffer, sizeof (buffer),fp);                                    //Read the CPU load
-  pclose(fp);
-  buffer[3]='\0';        
+    unsigned char  buffer[80] = {0};
+    unsigned int temp=0;
+    FILE * fp;
+
+    temp = Obaintemperature();                  //Gets the temperature of the CPU
+
+    fp = popen("top -bn1 | grep load | awk '{printf \"%.2f\", $(NF-2)}'","r");    //Gets the load on the CPU
+    fgets(buffer, sizeof (buffer),fp);                                    //Read the CPU load
+    pclose(fp);
+    buffer[3] = '\0';
   
-  OLED_Clear();                                        //Remove the interface
-  OLED_DrawBMP(0,0,128,4,BMP,TEMPERATURE_TYPE);
+    OLED_Clear();                                        //Remove the interface
+    OLED_DrawBMP(0,0,128,4,BMP,TEMPERATURE_TYPE);
   if (IP_SWITCH == IP_DISPLAY_OPEN)
   {
     // strcpy(IPSource,GetIpAddress());   //Get the IP address of the device's wireless network card

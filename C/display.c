@@ -19,7 +19,8 @@ int main(void)
         goto exit;
     }
 
-    char* IPSource = FirstGetIpAddress();
+    // TODO: avoid this
+    FirstGetIpAddress();
 
     unsigned char symbol = 0;
     while(1)
@@ -27,12 +28,11 @@ int main(void)
         fflush(stdout);
         fprintf(stdout, "Choosing display: `%i`\r\n", symbol);
         LCD_Display(symbol);
+
         sleep(4);
+
         symbol++;
-        if(symbol==3)
-        {
-          symbol=0;
-        }
+        if(symbol==3) { symbol=0;}
     }
 
     exit:
