@@ -175,7 +175,7 @@ void OLED_ShowNum(unsigned char x,unsigned char y,unsigned int num,unsigned char
 //Coordinate setting
 void OLED_Set_Pos(unsigned char x, unsigned char y) 
 {
-    printf(stdout, "Setting co-ordinates...")
+    printf("Setting co-ordinates...\r\n");
     OLED_WR_Byte(SSD1306_SETPAGE + y,OLED_CMD);
 	OLED_WR_Byte(((x&0xf0)>>4)|0x10,OLED_CMD);
 	OLED_WR_Byte((x&0x0f),OLED_CMD); 
@@ -228,7 +228,7 @@ void OLED_DrawBMP(unsigned char x0, unsigned char y0,unsigned char x1, unsigned 
     else {
         y = y1 / 8 + 1;
     }
-    printf("OLED_DrawBMP - Calculated y as: `%s`", y);
+    printf("OLED_DrawBMP - Calculated y as: `%s`\r\n", y);
 
 	for(y=y0;y<y1;y++)
 	{
