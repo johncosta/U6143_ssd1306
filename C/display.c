@@ -31,8 +31,8 @@ int main(void)
 
         sleep(4);
 
-        symbol++;
-        if(symbol==3) { symbol=0;}
+        //symbol++;
+        //if(symbol==3) { symbol=0;}
     }
 
     exit:
