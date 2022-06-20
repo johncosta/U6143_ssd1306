@@ -33,6 +33,11 @@ int setup(void)
         return 0;
     }
     usleep(150*1000);                                                  //Short delay Ensure the normal response of the lower function
+    exit:
+        if (ret) {
+            fprintf (stderr, "%s.\n", strerror(-ret));
+        }
+        return ret;
 }
 
 char IPSource[20]={0};
