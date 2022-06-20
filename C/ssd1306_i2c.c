@@ -21,7 +21,7 @@
 /*
  * Set up LCD Display
  */
-int setup(char *ic2_name[20])
+int setup(char ic2_name[20])
 {
     int ret = 0;
 
@@ -45,7 +45,7 @@ char IPSource[20]={0};
 int i2cd;
 
 // Init SSD1306
-int ssd1306_begin(char *ic2_name[20], unsigned int vccstate, unsigned int i2caddr)
+int ssd1306_begin(char ic2_name[20], unsigned int vccstate, unsigned int i2caddr)
 {
   unsigned char buffer[20]={0};
   unsigned char count=0;
@@ -56,7 +56,7 @@ int ssd1306_begin(char *ic2_name[20], unsigned int vccstate, unsigned int i2cadd
    * open file to read and write, and start the cursor for both
    * at the beginning of the file
    */
-  i2cd = open(ic2_name&, O_RDWR);
+  i2cd = open(ic2_name, O_RDWR);
   if (i2cd < 0)
   {
 	  fprintf(stderr, "Device I2C-1 failed to open\r\n");
