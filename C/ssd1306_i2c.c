@@ -21,7 +21,7 @@
 /*
  * Set up LCD Display
  */
-int setup(char ic2_name[20], unsigned int wait)
+int setup(unsigned char ic2_name[20], unsigned int wait)
 {
     int ret = 0;
 
