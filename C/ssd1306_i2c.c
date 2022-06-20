@@ -173,10 +173,11 @@ void OLED_ShowNum(unsigned char x,unsigned char y,unsigned int num,unsigned char
 
 
 //Coordinate setting
-void OLED_Set_Pos(unsigned char x, unsigned char y) 
+void OLED_Set_Pos(unsigned char x, unsigned char page_num)
 {
-    printf("Setting co-ordinates...\r\n");
-    OLED_WR_Byte(SSD1306_SETPAGE + y,OLED_CMD);
+    printf("Setting co-ordinates. page_num: `%i`...\r\n", page_num);
+
+    OLED_WR_Byte(SSD1306_SETPAGE + page_num,OLED_CMD);
 	OLED_WR_Byte(((x&0xf0)>>4)|0x10,OLED_CMD);
 	OLED_WR_Byte((x&0x0f),OLED_CMD); 
 } 
@@ -219,7 +220,7 @@ void Write_IIC_Command(unsigned char IIC_Command)
 /***********Display the BMP image  128X32  Starting point coordinates(x,y),The range of x 0~127   The range of y 0~4*****************/
 void OLED_DrawBMP(unsigned char x0, unsigned char y0, unsigned char x1, unsigned char y1,unsigned char BMP[][512],unsigned char symbol)
 {
-    printf("Drawing BMP: x0: `%s`. y0: `%s` \r\n", x0, y0);
+    printf("Drawing BMP: x0: `%i`. y0: `%i` \r\n", x0, y0);
     unsigned int j = 0;
     unsigned char x, y;
   
@@ -231,10 +232,10 @@ void OLED_DrawBMP(unsigned char x0, unsigned char y0, unsigned char x1, unsigned
     }
     //printf("OLED_DrawBMP - Calculated y as: `%s`\r\n", y);
 
-	for(y=y0;y<y1;y++)
+	for(y = y0;y<y1;y++)
 	{
-		OLED_Set_Pos(x0,y);
-		for(x=x0;x<x1;x++)
+		OLED_Set_Pos(x0, y);
+		for(x = x0; x < x1; x++)
 		{      
 			OLED_WR_Byte(BMP[symbol][j++],OLED_DATA);	    	
 		}
