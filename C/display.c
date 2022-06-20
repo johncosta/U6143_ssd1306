@@ -5,6 +5,7 @@ Demo for ssd1306 i2c driver for  Raspberry Pi
 #include "ssd1306_i2c.h"
 
 unsigned char i2c[20] = "/dev/i2c-1";
+unsigned int wait = 150 * 1000;  // 15s
 
 /*
  entrypoint for binary `display`
@@ -13,7 +14,7 @@ int main(void)
 {
     int ret;
 
-    ret = setup(i2c); if (ret > 0) {
+    ret = setup(i2c, wait); if (ret > 0) {
         goto exit;
     }
 

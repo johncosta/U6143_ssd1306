@@ -21,7 +21,7 @@
 /*
  * Set up LCD Display
  */
-int setup(char ic2_name[20])
+int setup(char ic2_name[20], unsigned int wait)
 {
     int ret = 0;
 
@@ -32,7 +32,8 @@ int setup(char ic2_name[20])
     }
     printf("Initialized.\r\n");
 
-    usleep(150*1000);                                                  //Short delay Ensure the normal response of the lower function
+    fprintf (stdout, "Waiting for: `%i`.\r\n", wait);
+    usleep(wait);   //Short delay Ensure the normal response of the lower function
 
     exit:
         if (ret) {
