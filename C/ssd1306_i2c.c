@@ -218,7 +218,8 @@ void Write_IIC_Command(unsigned char IIC_Command)
 
 /***********Display the BMP image  128X32  Starting point coordinates(x,y),The range of x 0~127   The range of y 0~4*****************/
 void OLED_DrawBMP(unsigned char x0, unsigned char y0,unsigned char x1, unsigned char y1,unsigned char BMP[][512],unsigned char symbol)
-{ 	
+{
+    printf("Drawing BMP: x: `%s`, y0: `%s`, x1: `%s`, BMP: `%s`, symbol: `%s`", x0, y0, x1, y1, BMP, symbol);
     unsigned int j=0;
     unsigned char x, y;
   
